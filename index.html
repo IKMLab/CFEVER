@@ -68,10 +68,14 @@
           <div class="list-group-item">
             <h4>About</h4>
             <p></p>
-            <p>The task of CFEVER is to answer research questions with yes/no/maybe (e.g.: <i>Do preoperative statins
-                reduce atrial fibrillation after coronary artery bypass grafting?</i>) using the corresponding
-              abstracts. </p>
-            <p>For more details about CFEVER, please refer to this paper:</p>
+            <p>
+              CFEVER is a Chinese Fact Extraction and VERification dataset.
+              Inspired by the FEVER dataset <a href="https://aclanthology.org/N18-1074/">(Thorne et al. 2018)</a>,
+              we provide class labels (Supports, Refutes, or Not Enough Information) and evidence for each claim in the CFEVER dataset.
+              CFEVER is currently the largest Chinese fact-checking dataset, and it can serve as a benchmark for Chinese fact verification and retrieval-augmented generation (RAG).
+            </p>
+
+            <p>For more details about CFEVER, please refer to our AAAI-24 paper:</p>
             <p class="text-center">
               <a href="https://arxiv.org/abs/1909.06146"><button type="button" class="btn btn-info">CFEVER Paper
                   (TBD)</button></a>
@@ -87,15 +91,15 @@
           </div>
           <div class="list-group-item">
             <h4>Submission</h4>
-            <p>To submit your model, please follow the instructions in the GitHub repository.</p>
+            <p>We do not provide the ground-truths for the test set. To submit your model, please follow the instructions in our GitHub repository.</p>
           </div>
           <div class="list-group-item">
             <h4>Citation</h4>
             <p>If you use CFEVER in your research, please cite our paper by:</p>
             <pre>
-@inproceedings{ying-jia2023CFEVER,
+@inproceedings{lin2023CFEVER,
   title={CFEVER: A Chinese Fact Extraction and VERification Dataset},
-  author={Lin, et al.},
+  author={Lin, Ying-Jia and Lin, Chun-Yi and Yeh, Chia-Jen and Li, Yi-Ting and Hu, Yun-Yu and Hsu, Chih-Hao and Lee, Mei-Feng and Kao, Hung-Yu},
   journal={Proceedings of the AAAI Conference on Artificial Intelligence},
   pages={},
   year={2024},
@@ -107,7 +111,7 @@
       <div class="col-lg-7">
         <div class="card card-outline-secondary">
           <div class="card-header">
-            Leaderboard (reasoning-required setting)
+            Leaderboard
           </div>
           <div class="card-body">
             <table class="table table-responsive">
@@ -116,25 +120,98 @@
                   <th scope="col" rowspan=1></th>
                   <th scope="col" rowspan=1 class="align-middle text-center">Model</th>
                   <th scope="col" rowspan=1 class="align-middle text-center">Code</th>
-                  <th scope="col" rowspan=1 class="align-middle text-center">Size</th>
+                  <!-- <th scope="col" rowspan=1 class="align-middle text-center">Size</th> -->
                   <th scope="col" colspan=1 class='text-center'>Accuracy (%)</th>
-                  <th scope="col" colspan=1 class='text-center'>FEVER Score<sub>1</sub> (%)</th>
+                  <th scope="col" colspan=1 class='text-center'>FEVER Score (%)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr style="background:#f4f4f4">
                   <td scope="row" class='align-middle text-center'>1<br>
-                    <span class="badge badge-secondary">September 22, 2023</span>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
                   </td>
-                  <td class='align-middle text-center'>Baseline<br />
-                    <span class="affiliation">IKMLab</span><br /><a href="https://arxiv.org/abs/2303.13375"
+                  <td class='align-middle text-center'>BEVERS<br />
+                    <span class="affiliation">University of Southern California & University of Nebraska-Lincoln</span><br /><a href="https://aclanthology.org/2023.fever-1.6/"
+                      class="paperlink">(DeHaven and Scott. 2023)</a>
+                      <br>
+                      <a href="https://arxiv.org/abs/2303.13375"
+                      class="paperlink">(Implemented in Lin et al. 2023)</a>
+                  </td>
+                  <td class='align-middle text-center'></td>
+                  <td class='align-middle text-center'>69.73</td>
+                  <td class='align-middle text-center'>64.80</td>
+                </tr>
+
+                <tr style="background:#f4f4f4">
+                  <td scope="row" class='align-middle text-center'>2<br>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
+                  </td>
+                  <td class='align-middle text-center'>Our baseline<br />
+                    <span class="affiliation">National Cheng Kung University</span><br /><a href="https://arxiv.org/abs/2303.13375"
                       class="paperlink">(Lin et al. 2023)</a>
                   </td>
                   <td class='align-middle text-center'></td>
-                  <td class='align-middle text-center'>TBD</td>
-                  <td class='align-middle text-center'>TBD</td>
-                  <td class='align-middle text-center'>TBD</td>
+                  <!-- <td class='align-middle text-center'></td> -->
+                  <td class='align-middle text-center'>61.17</td>
+                  <td class='align-middle text-center'>52.47</td>
                 </tr>
+
+                <tr style="background:#f4f4f4">
+                  <td scope="row" class='align-middle text-center'>3<br>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
+                  </td>
+                  <td class='align-middle text-center'>GPT-4 <i>(3-shot)</i><br />
+                    <span class="affiliation">Microsoft & OpenAI</span><br /><a href="https://arxiv.org/abs/2303.13375"
+                      class="paperlink">(Lin et al. 2023)</a>
+                  </td>
+                  <td class='align-middle text-center'></td>
+                  <!-- <td class='align-middle text-center'></td> -->
+                  <td class='align-middle text-center'>48.40</td>
+                  <td class='align-middle text-center'>NA</td>
+                </tr>
+
+                <tr style="background:#f4f4f4">
+                  <td scope="row" class='align-middle text-center'>4<br>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
+                  </td>
+                  <td class='align-middle text-center'>GPT-4 <i>(zero-shot)</i><br />
+                    <span class="affiliation">Microsoft & OpenAI</span><br /><a href="https://arxiv.org/abs/2303.13375"
+                      class="paperlink">(Lin et al. 2023)</a>
+                  </td>
+                  <td class='align-middle text-center'></td>
+                  <!-- <td class='align-middle text-center'></td> -->
+                  <td class='align-middle text-center'>47.23</td>
+                  <td class='align-middle text-center'>NA</td>
+                </tr>
+
+                <tr style="background:#f4f4f4">
+                  <td scope="row" class='align-middle text-center'>5<br>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
+                  </td>
+                  <td class='align-middle text-center'>GPT-3.5 <i>(3-shot)</i><br />
+                    <span class="affiliation">Microsoft & OpenAI</span><br /><a href="https://arxiv.org/abs/2303.13375"
+                      class="paperlink">(Lin et al. 2023)</a>
+                  </td>
+                  <td class='align-middle text-center'></td>
+                  <!-- <td class='align-middle text-center'></td> -->
+                  <td class='align-middle text-center'>44.20</td>
+                  <td class='align-middle text-center'>NA</td>
+                </tr>
+
+                <tr style="background:#f4f4f4">
+                  <td scope="row" class='align-middle text-center'>6<br>
+                    <span class="badge badge-secondary">Feb 20, 2024</span>
+                  </td>
+                  <td class='align-middle text-center'>GPT-3.5 <i>(zero-shot)</i><br />
+                    <span class="affiliation">Microsoft & OpenAI</span><br /><a href="https://arxiv.org/abs/2303.13375"
+                      class="paperlink">(Lin et al. 2023)</a>
+                  </td>
+                  <td class='align-middle text-center'></td>
+                  <!-- <td class='align-middle text-center'></td> -->
+                  <td class='align-middle text-center'>43.17</td>
+                  <td class='align-middle text-center'>NA</td>
+                </tr>
+
               </tbody>
             </table>
           </div>
@@ -150,11 +227,11 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <p class="copyright text-muted">Webpage template kindly provided by the IKMLab team.</p>
+            <p class="copyright text-muted">This work was led by <a href="https://ikmlab.csie.ncku.edu.tw/advisor.html">Prof. Hung-Yu Kao</a>.</p>
             <p class="copyright text-muted">Theme adapted from Start Bootstrap's <a
                 href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> template.</p>
             <p class="copyright text-muted">Leaderboard maintained by <a href="https://github.com/mcps5601">
-                Ying-Jia</a>. Last update: 2023-09-22.</p>
+                Ying-Jia Lin</a> <a href = "mailto: yingjia.lin.public@gmail.com">(Send Email)</a>. Last update: 2024-02-15.</p>
 
           </div>
         </div>
